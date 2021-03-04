@@ -1,0 +1,146 @@
+% 导言区域
+% article , book ,report ,letter
+% 支持中文
+\documentclass{ctexart} 
+% 注意声明的是graphicx 不是graphics
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+\title{Latex使用手册以及案例}
+\author{Leesure}
+\date{\today}
+
+
+
+% 正文部分
+\begin{document}
+% maketitle是将标题显示出来
+\maketitle
+
+% figure 浮动体环境
+\begin{figure} 
+    \centering
+    \includegraphics[scale=0.3]{figure/Snipaste_2021-03-03_16-39-12.png}
+    \caption{图片的标题}\label{figure_1}
+\end{figure}
+
+% 表格的浮动体环境
+\begin{table}
+    \centering
+    \caption{表格的标题}\label{tab_1}
+    \begin{tabular}{|l|ccc|r|}
+        \hline
+        姓名 & 计算机语言 & 数学 & C语言 & 备注\\
+        \hline
+        李 & 99  & 98 & 87  & 无\\
+        \hline
+        
+    \end{tabular}
+    
+\end{table}
+
+详情请见图\ref{figure_1}
+
+可以引用表格\ref{tab_1}
+
+hello,\LaTeX
+
+% $符号中的字符是数学公式格式输出,$$双符号表示行间公式
+
+
+Let  $f(x)$ be defined as $f(x) =x^2+x+1$
+
+
+    \begin{equation}
+        f(x) = x^2+x+1+x^3
+        \lim_{x \to \infty}  x^2
+        \ddots 
+    \end{equation}
+    \begin{equation}
+        f(x) = x^2+x+1+x^3
+        \lim_{x \to \infty}  x^2
+        \ddots 
+    \end{equation}
+    
+    % 矩阵的使用,需要引入amsmath宏包 ,\qquad 要用这个
+    \[ 
+        \begin{matrix}
+            0& 1\\
+            1& 0 
+        \end{matrix} \qquad 
+        % pmatrix 环境 小括号
+        \begin{pmatrix} 
+            0& 1\\
+            1& 0 
+        \end{pmatrix}  \qquad
+        % bmatrix 环境 中括号
+        \begin{bmatrix}
+            0&1\\
+            1&0
+        \end{bmatrix} \qquad 
+        % 大括号
+        \begin{Bmatrix}
+            0&1\\
+            1&0
+        \end{Bmatrix}\qquad
+        % 单竖线
+        \begin{vmatrix}
+            1&0\\
+            0&1
+        \end{vmatrix}\qquad 
+        % 双竖线
+        \begin{Vmatrix}
+            1&0\\
+            0&1 
+        \end{Vmatrix}
+    \]
+    矩阵的使用举例
+    % 常用的省略号 
+    % \ddots \vdots \dots
+    \[
+          A= \begin{bmatrix}
+              a_{11} & \dots & a_{1n} \\
+              \vdots & \ddots & \vdots \\
+              0 & \dots & a_{nn}
+          \end{bmatrix}_{n \times n}
+    \]
+    分块矩阵的使用案例:
+    \[
+          A= \begin{pmatrix}
+            %   嵌套举证
+            \begin{matrix}
+                1&0\\
+                0&1
+            \end{matrix}
+            % & \Large 0 \\ 这种写法没有大写的效果
+            & \text{\Large 0} \\
+            
+            \text{\Large 0} &
+            \begin{matrix}
+                1&0\\
+                -1&0
+            \end{matrix}
+          \end{pmatrix}
+    \]
+    三角命令使用案例：
+    \[
+      \begin{pmatrix}
+          a_{11} & a_{12} & \cdots &a_{1n} \\
+                 & a_{22} & \cdots & a_{2n} \\
+                 &        & \ddots & \vdots \\
+        \multicolumn{2}{c}{\raisebox{1.3ex}[0pt]{\Huge 0}} &    &a_{nn}
+      \end{pmatrix}  
+    \]
+    smallmatrix行内小矩阵,但是需要手动写上括号,整个math环境中不能有空行:
+      \begin{math}
+        \left(
+            \begin{smallmatrix}
+                x&-y \\
+                y&x
+            \end{smallmatrix}
+        \right)
+      \end{math}
+      
+      
+\end{document}
