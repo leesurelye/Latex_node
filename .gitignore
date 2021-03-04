@@ -1,5 +1,7 @@
 *.pdf
 *.log
 *.aux
+*.bbl
+*.blg
 figure
 *.synctex.gz

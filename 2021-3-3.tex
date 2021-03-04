@@ -5,7 +5,10 @@
 % 注意声明的是graphicx 不是graphics
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[numbers]{natbib}
 
+% 定义参考文献的格式
 
 \title{Latex使用手册以及案例}
 \author{Leesure}
@@ -141,6 +144,78 @@ Let  $f(x)$ be defined as $f(x) =x^2+x+1$
             \end{smallmatrix}
         \right)
       \end{math}
-      
-      
+    array环境，类似于表格环境tabular，可以产生横竖线：  
+
+    \section{多行公式的使用}
+    使用align环境对公式进行对齐，其中\&符号表示对齐的位置
+    \begin{align}
+        x &= t+ \cos t +1 \\
+        y &= s\sin t
+    \end{align}
+    使用gather环境来实现公式的多行转换,gather环境将公式编号
+    \begin{gather}
+        a+b =b+a \\
+        a\times b= b\times a
+    \end{gather}
+    gather*,notag 命令会阻止编号，将公式编号：
+    \begin{gather*}
+        a+b =b+a \\
+        a\times b= b\times a
+    \end{gather*}
+    不带编号的对齐：
+    \begin{align*}
+        x &=t   &   x&=\cos t       &   x&=t \\
+        y &=2t  &   y&=\sin(t+1)    &   y&= \sin t 
+    \end{align*}
+    split环境中的对齐采用align环境，且编号在中间
+    \begin{equation}
+        \begin{split}
+            \cos 2x &= \cos^2 x-\sin^2 x \\
+                    &= 2\cos^2 x - 1
+        \end{split}
+    \end{equation}
+
+    cases环境，每行公式使用\& 分割为两部分，通常表示值和后面的条件,注意大写的$\mathbb{Q}$需要
+    amssymb宏包的支持
+    \begin{equation}
+        D(x) = \begin{cases}
+            1, & \text{if : } x\in\mathbb{Q}; \\
+            0, & \text{if :} x \in \mathbb{R} \setminus \mathbb{Q}
+        \end{cases}
+    \end{equation}
+
+    \section{参考文献的使用}
+
+    参考文献库需要建立.bib格式的文件,详情请见ref.bib文件。
+    在这里将会引用ref.bib中文献库中的文献\\
+    LaTeX 参考文献标准选项及其样式共有以下8种：\\
+    plain，按字母的顺序排列，比较次序为作者、年度和标题.\\
+    unsrt，样式同plain，只是按照引用的先后排序.\\
+    alpha，用作者名首字母+年份后两位作标号，以字母顺序排序.\\
+    abbrv，类似plain，将月份全拼改为缩写，更显紧凑.\\
+    ieeetr，国际电气电子工程师协会期刊样式.\\
+    acm，美国计算机学会期刊样式.\\
+    siam，美国工业和应用数学学会期刊样式.\\
+    apalike，美国心理学学会期刊样式\\
+    
+    \subsection{使用bibTex管理参考文献库}
+
+    使用thebibliography环境,引用一篇文章使用cite article
+
+    在这里引用文献\cite{article1}中的内容
+
+    在这里引用书籍\cite{book1} 中的内容
+
+    注意使用参考文献库，需要[numbers]{natbib}宏包，并且定义参考文献格式为：plainnat
+    引用文献库中的文献\cite{heilman2010good} \\
+    不同的文献引用格式 citet 格式：\citet{heilman2010good} \\
+    citep格式： \citep{heilman2010good}
+    \bibliographystyle{plainnat}
+    \bibliography{cited}
+
+    \begin{thebibliography}{99}
+        \bibitem{article1}文献作者姓名 \emph{文献名称}[J] 出版社 年份
+        \bibitem{book1} 书籍作者姓名 \emph{文献名称} 出版社  年份
+    \end{thebibliography}
+    
 \end{document}
